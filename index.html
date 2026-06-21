@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berry Bliss — ไอศกรีมเบอร์รี่สด</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink-bg: #f7b8cf;
+    --pink-deep: #e0508a;
+    --berry-red: #c0203f;
+    --berry-purple: #6b2a6e;
+    --cream: #fff7ef;
+    --cream-deep: #ffe9d6;
+    --ink: #4a1430;
+    --gold: #f3c64b;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Sarabun',sans-serif;
+    background:
+      radial-gradient(circle at 20% 10%, #ffd1e3 0%, transparent 45%),
+      radial-gradient(circle at 80% 90%, #f598bb 0%, transparent 50%),
+      var(--pink-bg);
+    color:var(--ink);
+    min-height:100vh;
+  }
+  h1,h2,h3, .display{
+    font-family:'Fredoka',sans-serif;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:56px 20px 40px;
+    text-align:center;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(255,255,255,.35), transparent 60%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-block;
+    background:var(--cream);
+    color:var(--berry-red);
+    font-weight:700;
+    font-size:.78rem;
+    letter-spacing:.12em;
+    padding:6px 16px;
+    border-radius:999px;
+    box-shadow:0 4px 0 rgba(192,32,63,.15);
+  }
+  .hero h1{
+    font-size:clamp(2rem, 6vw, 3.4rem);
+    line-height:1.05;
+    margin:18px 0 8px;
+    color:var(--berry-red);
+    text-shadow: 2px 3px 0 rgba(255,255,255,.5);
+  }
+  .hero h1 span{ color:var(--berry-purple); }
+  .hero p.sub{
+    max-width:480px;
+    margin:0 auto 28px;
+    font-size:1.05rem;
+    color:#7a2a4d;
+  }
+  .hero-img-wrap{
+    position:relative;
+    width:min(78%, 320px);
+    margin:0 auto;
+    filter:drop-shadow(0 22px 24px rgba(120,15,55,.35));
+  }
+  .hero-img-wrap img{
+    width:100%;
+    display:block;
+    animation: float 5s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{ transform: translateY(0px) rotate(0deg); }
+    50%{ transform: translateY(-10px) rotate(-1.2deg); }
+  }
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(2px);
+    opacity:.55;
+  }
+  .blob.b1{ width:18px; height:18px; background:var(--gold); top:8%; left:6%; animation: drip 4s ease-in-out infinite; }
+  .blob.b2{ width:12px; height:12px; background:#fff; top:18%; right:8%; animation: drip 3.4s ease-in-out infinite .6s;}
+  .blob.b3{ width:14px; height:14px; background:var(--cream); bottom:14%; left:4%; animation: drip 4.6s ease-in-out infinite 1.1s;}
+  @keyframes drip{
+    0%,100%{ transform: translateY(0); opacity:.55;}
+    50%{ transform: translateY(10px); opacity:.95;}
+  }
+  .cta-row{
+    margin-top:30px;
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    border:none;
+    cursor:pointer;
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:1rem;
+    padding:14px 30px;
+    border-radius:999px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{
+    background:var(--berry-red);
+    color:var(--cream);
+    box-shadow:0 6px 0 #8a1530;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 8px 0 #8a1530; }
+  .btn-primary:active{ transform:translateY(2px); box-shadow:0 3px 0 #8a1530; }
+  .btn-ghost{
+    background:transparent;
+    border:2px solid var(--berry-red);
+    color:var(--berry-red);
+  }
+
+  /* ---------- FLAVOR STRIP ---------- */
+  .strip{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    padding:0 20px 10px;
+  }
+  .pill{
+    background:rgba(255,255,255,.55);
+    border:1px solid rgba(192,32,63,.25);
+    color:var(--berry-purple);
+    font-size:.85rem;
+    font-weight:600;
+    padding:6px 14px;
+    border-radius:999px;
+  }
+
+  /* ---------- ORDER SECTION ---------- */
+  .order-section{
+    background:var(--cream);
+    border-radius:36px 36px 0 0;
+    margin-top:30px;
+    padding:50px 20px 70px;
+    position:relative;
+  }
+  .order-section::before{
+    content:"";
+    position:absolute;
+    top:-18px; left:50%;
+    transform:translateX(-50%);
+    width:70px; height:36px;
+    background:var(--cream);
+    border-radius:50% 50% 0 0/ 100% 100% 0 0;
+  }
+  .section-head{
+    text-align:center;
+    max-width:560px;
+    margin:0 auto 36px;
+  }
+  .section-head .eyebrow{
+    background:var(--cream-deep);
+    color:var(--berry-purple);
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem,4vw,2.2rem);
+    color:var(--berry-red);
+    margin:14px 0 8px;
+  }
+  .section-head p{
+    color:#7a4a55;
+    margin:0;
+  }
+
+  .layout{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:28px;
+    max-width:920px;
+    margin:0 auto;
+  }
+  @media(min-width:860px){
+    .layout{ grid-template-columns: 1.1fr .9fr; align-items:start; }
+  }
+
+  form{
+    background:#fff;
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 14px 0 rgba(224,80,138,.12);
+    border:2px solid var(--cream-deep);
+  }
+  fieldset{
+    border:none;
+    padding:0;
+    margin:0 0 22px;
+  }
+  legend{
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    color:var(--berry-purple);
+    font-size:1rem;
+    margin-bottom:10px;
+  }
+  label.field{
+    display:block;
+    margin-bottom:16px;
+  }
+  label.field span{
+    display:block;
+    font-size:.85rem;
+    font-weight:600;
+    color:#7a4a55;
+    margin-bottom:6px;
+  }
+  input[type=text]{
+    width:100%;
+    padding:11px 14px;
+    border-radius:12px;
+    border:2px solid var(--cream-deep);
+    font-family:'Sarabun',sans-serif;
+    font-size:.95rem;
+    background:var(--cream);
+    color:var(--ink);
+  }
+  input[type=text]:focus{
+    outline:none;
+    border-color:var(--pink-deep);
+  }
+
+  .choice-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:10px;
+  }
+  .choice{
+    position:relative;
+  }
+  .choice input{
+    position:absolute;
+    opacity:0;
+    inset:0;
+    cursor:pointer;
+  }
+  .choice .card{
+    border:2px solid var(--cream-deep);
+    border-radius:14px;
+    padding:10px 12px;
+    font-size:.88rem;
+    font-weight:600;
+    color:var(--berry-purple);
+    background:var(--cream);
+    transition:all .15s ease;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .choice .card .dot{
+    width:14px;height:14px;border-radius:50%;
+    flex-shrink:0;
+  }
+  .choice input:checked + .card{
+    border-color:var(--berry-red);
+    background:#fff0f4;
+    box-shadow:0 0 0 3px rgba(192,32,63,.12);
+  }
+  .choice input:focus-visible + .card{
+    outline:2px solid var(--pink-deep);
+    outline-offset:2px;
+  }
+
+  .qty-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .qty-btn{
+    width:38px;height:38px;
+    border-radius:50%;
+    border:2px solid var(--berry-red);
+    background:#fff;
+    color:var(--berry-red);
+    font-size:1.2rem;
+    font-weight:700;
+    cursor:pointer;
+    line-height:1;
+  }
+  .qty-num{
+    font-family:'Fredoka',sans-serif;
+    font-size:1.3rem;
+    font-weight:600;
+    min-width:30px;
+    text-align:center;
+  }
+
+  .submit-btn{
+    width:100%;
+    margin-top:6px;
+  }
+
+  /* ---------- RESULT CARD ---------- */
+  .result{
+    background:linear-gradient(160deg, var(--berry-purple), var(--berry-red));
+    color:var(--cream);
+    border-radius:24px;
+    padding:28px;
+    min-height:280px;
+    position:relative;
+    overflow:hidden;
+  }
+  .result::after{
+    content:"";
+    position:absolute;
+    width:200px;height:200px;
+    background:rgba(255,255,255,.08);
+    border-radius:50%;
+    top:-60px; right:-60px;
+  }
+  .result h3{
+    margin:0 0 6px;
+    font-size:1.3rem;
+  }
+  .result .empty{
+    opacity:.85;
+    font-size:.92rem;
+    line-height:1.6;
+  }
+  .receipt{
+    background:rgba(255,255,255,.12);
+    border-radius:16px;
+    padding:18px;
+    margin-top:14px;
+    font-size:.92rem;
+    line-height:1.7;
+  }
+  .receipt strong{ color:var(--gold); }
+  .receipt .row{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px dashed rgba(255,255,255,.25);
+    padding:6px 0;
+  }
+  .receipt .row:last-child{ border-bottom:none; }
+  .total{
+    margin-top:10px;
+    display:flex;
+    justify-content:space-between;
+    font-family:'Fredoka',sans-serif;
+    font-size:1.15rem;
+    font-weight:600;
+  }
+  .badge-new{
+    display:inline-block;
+    background:var(--gold);
+    color:#5b3a00;
+    font-size:.72rem;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:999px;
+    margin-bottom:10px;
+  }
+
+  footer{
+    text-align:center;
+    padding:24px;
+    font-size:.8rem;
+    color:#7a4a55;
+    background:var(--cream);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-img-wrap img, .blob{ animation:none !important; }
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <span class="eyebrow">เบอร์รี่สดทุกสกู๊ป</span>
+    <h1>Berry Bliss<br><span>ไอศกรีมเบอร์รี่สดชื่นใจ</span></h1>
+    <p class="sub">สโคปนุ่มละมุน คลุกเคล้าเบอร์รี่สดจากไร่ ราดด้วยซอสเบอร์รี่หวานฉ่ำ พร้อมเสิร์ฟในโคนกรอบทุกออเดอร์</p>
+
+    <div class="hero-img-wrap">
+      <img src="https://images.unsplash.com/photo-1593558159516-d0be2a960c52?fm=jpg&amp;q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="ไอศกรีมโคนสตรอว์เบอร์รี่ ถ่ายระยะใกล้" loading="eager">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
+    </div>
+
+    <div class="cta-row">
+      <button class="btn btn-primary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">สั่งเลย 🍓</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('flavors').scrollIntoView({behavior:'smooth'})">ดูรสชาติ</button>
+    </div>
+  </section>
+
+  <div class="strip" id="flavors">
+    <span class="pill">🍓 สตรอว์เบอร์รี่</span>
+    <span class="pill">🫐 บลูเบอร์รี่</span>
+    <span class="pill">🍇 แบล็กเบอร์รี่</span>
+    <span class="pill">🥝 มิกซ์เบอร์รี่</span>
+  </div>
+
+  <section class="order-section" id="order">
+    <div class="section-head">
+      <span class="eyebrow">สั่งของคุณ</span>
+      <h2>ปรับสกู๊ปในแบบของคุณ</h2>
+      <p>เลือกรสชาติ ท็อปปิ้ง และจำนวน แล้วดูสรุปออเดอร์ทันทีทางขวา</p>
+    </div>
+
+    <div class="layout">
+      <form id="orderForm">
+        <fieldset>
+          <legend>ชื่อผู้สั่ง</legend>
+          <label class="field">
+            <span>ชื่อเล่นของคุณ</span>
+            <input type="text" id="custName" placeholder="เช่น มะนาว" required>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>เลือกรสไอศกรีม</legend>
+          <div class="choice-grid">
+            <label class="choice">
+              <input type="radio" name="flavor" value="สตรอว์เบอร์รี่|290" checked>
+              <span class="card"><span class="dot" style="background:#c0203f"></span>สตรอว์เบอร์รี่ ฿290</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="flavor" value="บลูเบอร์รี่|290">
+              <span class="card"><span class="dot" style="background:#3a4ea0"></span>บลูเบอร์รี่ ฿290</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="flavor" value="แบล็กเบอร์รี่|290">
+              <span class="card"><span class="dot" style="background:#6b2a6e"></span>แบล็กเบอร์รี่ ฿290</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="flavor" value="มิกซ์เบอร์รี่|320">
+              <span class="card"><span class="dot" style="background:#e0508a"></span>มิกซ์เบอร์รี่ ฿320</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>ท็อปปิ้งเพิ่ม (เลือกได้หลายอย่าง)</legend>
+          <div class="choice-grid">
+            <label class="choice">
+              <input type="checkbox" name="topping" value="ซอสเบอร์รี่|20">
+              <span class="card">ซอสเบอร์รี่ +฿20</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="topping" value="มินต์ใบสด|10">
+              <span class="card">มินต์ใบสด +฿10</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="topping" value="คิวีฝอย|15">
+              <span class="card">คิวีฝอย +฿15</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="topping" value="โคนกรอบพิเศษ|25">
+              <span class="card">โคนกรอบพิเศษ +฿25</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>จำนวน</legend>
+          <div class="qty-row">
+            <button type="button" class="qty-btn" id="qtyMinus" aria-label="ลดจำนวน">−</button>
+            <span class="qty-num" id="qtyNum">1</span>
+            <button type="button" class="qty-btn" id="qtyPlus" aria-label="เพิ่มจำนวน">+</button>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary submit-btn">สรุปออเดอร์ 🍦</button>
+      </form>
+
+      <div class="result" id="resultCard">
+        <h3>สรุปออเดอร์ของคุณ</h3>
+        <p class="empty" id="resultEmpty">ยังไม่มีออเดอร์ — กรอกฟอร์มด้านซ้ายแล้วกด "สรุปออเดอร์" เพื่อดูรายละเอียดที่นี่</p>
+        <div id="resultContent" style="display:none;"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Berry Bliss · ทำสดใหม่ทุกวัน 🍓🫐🍇</footer>
+
+<script>
+  let qty = 1;
+  const qtyNum = document.getElementById('qtyNum');
+  document.getElementById('qtyPlus').addEventListener('click', () => {
+    qty = Math.min(qty + 1, 20);
+    qtyNum.textContent = qty;
+  });
+  document.getElementById('qtyMinus').addEventListener('click', () => {
+    qty = Math.max(qty - 1, 1);
+    qtyNum.textContent = qty;
+  });
+
+  document.getElementById('orderForm').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const name = document.getElementById('custName').value.trim() || 'ลูกค้า';
+    const flavorRaw = document.querySelector('input[name="flavor"]:checked').value.split('|');
+    const flavorName = flavorRaw[0];
+    const flavorPrice = parseInt(flavorRaw[1], 10);
+
+    const toppingEls = document.querySelectorAll('input[name="topping"]:checked');
+    let toppingsHtml = '';
+    let toppingsTotal = 0;
+    toppingEls.forEach(el => {
+      const [tName, tPrice] = el.value.split('|');
+      toppingsTotal += parseInt(tPrice, 10);
+      toppingsHtml += `<div class="row"><span>+ ${tName}</span><span>฿${tPrice}</span></div>`;
+    });
+    if(toppingsHtml === ''){
+      toppingsHtml = `<div class="row"><span>ไม่มีท็อปปิ้งเพิ่ม</span><span>฿0</span></div>`;
+    }
+
+    const unitTotal = flavorPrice + toppingsTotal;
+    const grandTotal = unitTotal * qty;
+
+    const empty = document.getElementById('resultEmpty');
+    const content = document.getElementById('resultContent');
+    empty.style.display = 'none';
+    content.style.display = 'block';
+
+    content.innerHTML = `
+      <span class="badge-new">ออเดอร์ใหม่</span>
+      <div>สวัสดีคุณ <strong>${name}</strong> 👋 นี่คือสรุปออเดอร์ของคุณ:</div>
+      <div class="receipt">
+        <div class="row"><span>รสไอศกรีม</span><span><strong>${flavorName}</strong></span></div>
+        <div class="row"><span>ราคาต่อสกู๊ป</span><span>฿${flavorPrice}</span></div>
+        ${toppingsHtml}
+        <div class="row"><span>จำนวน</span><span>x${qty}</span></div>
+        <div class="total"><span>ยอดรวม</span><span>฿${grandTotal}</span></div>
+      </div>
+    `;
+
+    document.getElementById('resultCard').scrollIntoView({behavior:'smooth', block:'center'});
+  });
+</script>
+
+</body>
+</html>
